@@ -1,0 +1,72 @@
+deploy-server-1-192.82.92.226:
+  tags:
+    - shelby
+  stage: deploy
+  script:
+    # ar bkh bo bu da dd do du go gs khe kho khs moc om or ov se su to ub uv za
+    - rsync --rsync-path="sudo rsync" --chown www-data:www-data -avz --delete $CI_PROJECT_DIR/ root@192.82.92.226:/var/www/html/ar/wp-content/themes/moc/
+    - rsync --rsync-path="sudo rsync" --chown www-data:www-data -avz --delete $CI_PROJECT_DIR/ root@192.82.92.226:/var/www/html/ar/en/wp-content/themes/moc/
+    - ssh root@192.82.92.226 "bash /root/moc.sh"
+    - ssh root@192.82.92.226 "bash /root/moc-en.sh"
+  only: 
+    - master 
+  when: manual 
+
+deploy-server-2-192.82.92.241:
+  tags:
+    - shelby
+  stage: deploy
+  script:
+    # bkm caa ctm kkm mag mtm ncch nhm nm ovpa zbm
+    - rsync --rsync-path="sudo rsync" --chown www-data:www-data -avz --delete $CI_PROJECT_DIR/ root@192.82.92.241:/var/www/html/bkm/wp-content/themes/moc/
+    - rsync --rsync-path="sudo rsync" --chown www-data:www-data -avz --delete $CI_PROJECT_DIR/ root@192.82.92.241:/var/www/html/bkm/en/wp-content/themes/moc/
+    - ssh root@192.82.92.241 "bash /root/moc.sh"
+    - ssh root@192.82.92.241 "bash /root/moc-en.sh"
+  only: 
+    - master 
+  when: manual 
+
+# deploy-server-3-192.82.92.242:
+#   tags:
+#     - shelby
+#   stage: deploy
+#   script:
+#     # iisnc
+#     - rsync --rsync-path="sudo rsync" --chown www-data:www-data -avz --delete $CI_PROJECT_DIR/ root@192.82.92.242:/var/www/html/iisnc/wp-content/themes/moc/
+#     - rsync --rsync-path="sudo rsync" --chown www-data:www-data -avz --delete $CI_PROJECT_DIR/ root@192.82.92.242:/var/www/html/iisnc/en/wp-content/themes/moc/
+#     # bkpa
+#     - rsync --rsync-path="sudo rsync" --chown www-data:www-data -avz --delete $CI_PROJECT_DIR/ root@192.82.92.242:/var/www/html/bkpa/wp-content/themes/moc/
+#     - rsync --rsync-path="sudo rsync" --chown www-data:www-data -avz --delete $CI_PROJECT_DIR/ root@192.82.92.242:/var/www/html/bkpa/en/wp-content/themes/moc/
+#     # cci
+#     - rsync --rsync-path="sudo rsync" --chown www-data:www-data -avz --delete $CI_PROJECT_DIR/ root@192.82.92.242:/var/www/html/cci/wp-content/themes/moc/
+#     - rsync --rsync-path="sudo rsync" --chown www-data:www-data -avz --delete $CI_PROJECT_DIR/ root@192.82.92.242:/var/www/html/cci/en/wp-content/themes/moc/
+#     # cclm
+#     - rsync --rsync-path="sudo rsync" --chown www-data:www-data -avz --delete $CI_PROJECT_DIR/ root@192.82.92.242:/var/www/html/cclm/wp-content/themes/moc/
+#     - rsync --rsync-path="sudo rsync" --chown www-data:www-data -avz --delete $CI_PROJECT_DIR/ root@192.82.92.242:/var/www/html/cclm/en/wp-content/themes/moc/
+#     # chm
+#     - rsync --rsync-path="sudo rsync" --chown www-data:www-data -avz --delete $CI_PROJECT_DIR/ root@192.82.92.242:/var/www/html/chm/wp-content/themes/moc/
+#     - rsync --rsync-path="sudo rsync" --chown www-data:www-data -avz --delete $CI_PROJECT_DIR/ root@192.82.92.242:/var/www/html/chm/en/wp-content/themes/moc/
+#     # mapa
+#     - rsync --rsync-path="sudo rsync" --chown www-data:www-data -avz --delete $CI_PROJECT_DIR/ root@192.82.92.242:/var/www/html/mapa/wp-content/themes/moc/
+#     - rsync --rsync-path="sudo rsync" --chown www-data:www-data -avz --delete $CI_PROJECT_DIR/ root@192.82.92.242:/var/www/html/mapa/en/wp-content/themes/moc/
+#     # mdt
+#     - rsync --rsync-path="sudo rsync" --chown www-data:www-data -avz --delete $CI_PROJECT_DIR/ root@192.82.92.242:/var/www/html/mdt/wp-content/themes/moc/
+#     - rsync --rsync-path="sudo rsync" --chown www-data:www-data -avz --delete $CI_PROJECT_DIR/ root@192.82.92.242:/var/www/html/mdt/en/wp-content/themes/moc/
+#     # mgt
+#     - rsync --rsync-path="sudo rsync" --chown www-data:www-data -avz --delete $CI_PROJECT_DIR/ root@192.82.92.242:/var/www/html/mgt/wp-content/themes/moc/
+#     - rsync --rsync-path="sudo rsync" --chown www-data:www-data -avz --delete $CI_PROJECT_DIR/ root@192.82.92.242:/var/www/html/mgt/en/wp-content/themes/moc/
+#     # mnl
+#     - rsync --rsync-path="sudo rsync" --chown www-data:www-data -avz --delete $CI_PROJECT_DIR/ root@192.82.92.242:/var/www/html/mnl/wp-content/themes/moc/
+#     - rsync --rsync-path="sudo rsync" --chown www-data:www-data -avz --delete $CI_PROJECT_DIR/ root@192.82.92.242:/var/www/html/mnl/en/wp-content/themes/moc/
+#     # np
+#     - rsync --rsync-path="sudo rsync" --chown www-data:www-data -avz --delete $CI_PROJECT_DIR/ root@192.82.92.242:/var/www/html/np/wp-content/themes/moc/
+#     - rsync --rsync-path="sudo rsync" --chown www-data:www-data -avz --delete $CI_PROJECT_DIR/ root@192.82.92.242:/var/www/html/np/en/wp-content/themes/moc/
+#     # npt
+#     - rsync --rsync-path="sudo rsync" --chown www-data:www-data -avz --delete $CI_PROJECT_DIR/ root@192.82.92.242:/var/www/html/npt/wp-content/themes/moc/
+#     - rsync --rsync-path="sudo rsync" --chown www-data:www-data -avz --delete $CI_PROJECT_DIR/ root@192.82.92.242:/var/www/html/npt/en/wp-content/themes/moc/
+#     # obt
+#     - rsync --rsync-path="sudo rsync" --chown www-data:www-data -avz --delete $CI_PROJECT_DIR/ root@192.82.92.242:/var/www/html/obt/wp-content/themes/moc/
+#     - rsync --rsync-path="sudo rsync" --chown www-data:www-data -avz --delete $CI_PROJECT_DIR/ root@192.82.92.242:/var/www/html/obt/en/wp-content/themes/moc/
+#   only: 
+#     - master 
+#   when: manual 
